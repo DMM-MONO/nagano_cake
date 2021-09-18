@@ -1,0 +1,12 @@
+<h1>投稿一覧</h1>
+<% @items.each do |item| %>
+  <p>タイトル</p>
+  <span><%= item.id %></span>
+ <span><%= item.name %></span>
+  <span><%= item.price %></span>
+   <span><%= item.genre.name %></span>
+    <span><%= if item.is_active == true %><p>販売中</p>
+     <% else %>販売停止
+    </span>
+  
+<% end %>
