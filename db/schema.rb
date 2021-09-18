@@ -9,8 +9,8 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema.define(version: 2021_09_17_092501) do
 
+ActiveRecord::Schema.define(version: 2021_09_18_072938) do
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2021_09_17_092501) do
     t.string "image_id"
     t.integer "price"
     t.boolean "is_active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shipping_addresses", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "post_code"
+    t.string "address"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
