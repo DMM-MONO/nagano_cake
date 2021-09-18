@@ -6,4 +6,7 @@ Rails.application.routes.draw do
 }
   #public
   get 'about' => 'public/homes#about'
+  namespace :admin do
+    resources :genres, only: [:edit, :create, :index, :update]
+  end
 end
