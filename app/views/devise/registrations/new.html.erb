@@ -1,6 +1,6 @@
 <h2>新規会員</h2>
 
-<%= form_with model: @customer, url: new_customer_registration_path, local: true do |f| %>
+<%= form_with model: @customer, url:  customer_registration_path, local: true do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 　<div class= "d-flex flex-row bd-highlight mb-3">
     <div class ="d-flex flex-row p-2 bd-highlight">
