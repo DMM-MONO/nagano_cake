@@ -14,5 +14,4 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     resources :shipping_addresses, only: [:index,:create,:edit,:update,:destroy]
   end
-  
 end
