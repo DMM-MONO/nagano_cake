@@ -20,7 +20,11 @@
   <td><%= item.name %></td>
   <td><%= item.price %></td>
   <td><%= item.genre.name %></td>
+  <% if item.is_active == "販売中" %>
+  <td class="active"><%= item.is_active %></td>
+  <% else %>
   <td><%= item.is_active %></td>
+  <% end %>
 <% end %>
 </tr>
 </tbody>
