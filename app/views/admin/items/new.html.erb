@@ -12,11 +12,11 @@
    <%= f.text_field :price %>円
   <h4>販売状況</h4>
   <div>
-   <%= f.radio_button :is_active, :sold %>
+   <%= f.radio_button :is_active, :販売中 %>
    <%= f.label :done, '販売中', value: true %>
   </div>
    <div>
-    <%= f.radio_button :is_active, :soldout %>
+    <%= f.radio_button :is_active, :販売停止中 %>
     <%= f.label :done, '販売停止', value: false %>
    </div>
   <%= f.submit '新規登録' %>

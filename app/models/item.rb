@@ -6,8 +6,8 @@ class Item < ApplicationRecord
    belongs_to :genre
    # 販売ステータス０販売中 １販売停止
    enum is_active: {
-    sold: true,
-    soldout: false,
+    販売中: true,
+    販売停止中: false,
    }
    
    
