@@ -4,6 +4,8 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :shipping_addresses, dependent: :destroy
+
   #with_optionsで共通のバリデーションをまとめる
   with_options presence: true do |u|
     u.validates :first_name
