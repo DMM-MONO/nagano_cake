@@ -7,9 +7,15 @@ Rails.application.routes.draw do
 }
   #public
   get 'about' => 'public/homes#about'
+
   namespace :admin do
     resources :genres, only: [:edit, :create, :index, :update]
     resources :items
 
   end
+  
+   #退会機能
+  get '/unsubscribe' => 'public/customers#unsubscribe', as: 'confirm_unsubscribe'
+  patch '/withdraw' => 'public/customers#withdraw', as: 'withdraw_customer'
+
 end
