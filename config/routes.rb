@@ -7,11 +7,16 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :genres, only: [:edit, :create, :index, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
 
 #URLにpublicを入れたくないためscope
   scope module: :public do
     get 'about' => 'homes#about'
+    get   'unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer'
+    patch 'withdraw' => 'customers#withdraw', as: 'withdraw_customer'
+    resource  :customer,     only:[:show,:edit,:update]
     resources :shipping_addresses, only: [:index,:create,:edit,:update,:destroy]
   end
+
 end
