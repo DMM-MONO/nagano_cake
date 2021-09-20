@@ -4,23 +4,20 @@ Rails.application.routes.draw do
   passwords:     'publics/passwords',
   registrations: 'publics/registrations', only: [:cancel, :new, :update]
 }
-  get 'about' => 'public/homes#about'
 
   namespace :admin do
     resources :genres, only: [:edit, :create, :index, :update]
   end
-  
+
+  #URLにpublicを入れたくないためscope
   scope module: 'public' do
+    get 'about' => 'homes#about'
     get   'unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer'
     patch 'withdraw' => 'customers#withdraw', as: 'withdraw_customer'
     resource  :customer,     only:[:show,:edit,:update]
     resources :orders
+    resources :shipping_addresses, only: [:index,:create,:edit,:update,:destroy]
   end
     
 end
   
-   #退会機能
-  #get '/unsubscribe' => 'public/customers#unsubscribe', as: 'confirm_unsubscribe'
-  #patch '/unsubscribe' => 'public/customers#withdraw', as: 'withdraw_customer'
-
-
