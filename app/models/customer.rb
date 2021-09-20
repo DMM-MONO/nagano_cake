@@ -3,7 +3,6 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
   #with_optionsで共通のバリデーションをまとめる
   with_options presence: true do |u|
     u.validates :first_name
