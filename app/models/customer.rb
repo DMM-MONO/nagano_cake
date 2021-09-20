@@ -14,5 +14,14 @@ class Customer < ApplicationRecord
     u.validates :address
     u.validates :phone_number, format: { with: /\A\d{10,11}\z/} #電話番号は10桁か11桁
   end
+  
+  def full_name
+    self.last_name + " " + self.first_name
+  end
+
+  def full_name_kana
+    self.last_name_kana + " " + self.first_name_kana
+  end
+
 
 end
