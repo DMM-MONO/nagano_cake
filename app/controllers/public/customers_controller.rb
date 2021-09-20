@@ -1,5 +1,4 @@
 class Public::CustomersController < ApplicationController
-    
     def edit
       @customer = current_customer
     end
@@ -16,7 +15,6 @@ class Public::CustomersController < ApplicationController
       else
       render "edit"
       end
-    end
     
     def unsubscribe
       @customer = current_customer
@@ -28,11 +26,11 @@ class Public::CustomersController < ApplicationController
     reset_session
     redirect_to about_path
     end
-    
+
     private
-    
     def customer_params
       params.require(:customer).permit(:is_deleted, :last_name, :first_name, :last_name_kana, :first_name_kana, :post_code, :address, :phone_number, :email)
     end
+      
 end
-    
+
