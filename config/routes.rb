@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :customers, controllers: {
   sessions:      'publics/sessions',
   passwords:     'publics/passwords',
-  registrations: 'publics/registrations'
+  registrations: 'publics/registrations', only: [:cancel, :new, :update]
 }
 
   namespace :admin do
@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
   end
 
-#URLにpublicを入れたくないためscope
-  scope module: :public do
+  #URLにpublicを入れたくないためscope
+  scope module: 'public' do
     get 'about' => 'homes#about'
     get   'unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer'
     patch 'withdraw' => 'customers#withdraw', as: 'withdraw_customer'
@@ -20,3 +20,4 @@ Rails.application.routes.draw do
   end
 
 end
+  

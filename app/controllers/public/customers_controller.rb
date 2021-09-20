@@ -1,7 +1,23 @@
 class Public::CustomersController < ApplicationController
-
+    def edit
+      @customer = current_customer
+    end
+    
+    def show
+      @customer = current_customer
+    end
+    
+    def update
+      @customer = current_customer
+      if @customer.update(customer_params)
+      flash[:notice]="会員情報を更新しました"
+      redirect_to customer_path
+      else
+      render "edit"
+      end
+    
     def unsubscribe
-    @customer = current_customer
+      @customer = current_customer
     end
 
     def withdraw
@@ -12,10 +28,9 @@ class Public::CustomersController < ApplicationController
     end
 
     private
-
     def customer_params
-      params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana,
-                                     :post_code, :address, :phone_number, :email, :is_deleted)
+      params.require(:customer).permit(:is_deleted, :last_name, :first_name, :last_name_kana, :first_name_kana, :post_code, :address, :phone_number, :email)
     end
+      
 end
 
