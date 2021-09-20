@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :genres, only: [:edit, :create, :index, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
 
   #URLにpublicを入れたくないためscope
@@ -18,6 +19,6 @@ Rails.application.routes.draw do
     resources :orders
     resources :shipping_addresses, only: [:index,:create,:edit,:update,:destroy]
   end
-    
+
 end
   
