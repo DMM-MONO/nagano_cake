@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <h5 class="two-line-heading">マイページ</h5>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-10 d-flex justify-content-end">
+      <div><%= link_to "編集する", edit_customer_path, class:"btn-flat-success float-right" %></div>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-10">
+      <table class="table table-bordered">
+        <tr>
+          <th>氏名</th>
+          <td class="w-75"><%= @customer.full_name %></td>
+        </tr>
+        <tr>
+          <th>カナ</th>
+          <td class="w-75"><%= @customer.full_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td class="w-75"><%= @customer.post_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td class="w-75"><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td class="w-75"><%= @customer.phone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td class="w-75"><%= @customer.email %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+   <div><%= link_to "配送先", class:"btn-flat-primary" %></div>
+   <div><%= link_to "注文履歴", class:"btn-flat-primary ml-2" %></div>
+
+
+
+
+</div>
