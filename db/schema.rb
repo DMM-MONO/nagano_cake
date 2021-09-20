@@ -9,6 +9,11 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
+<<<<<<< HEAD
+
+ActiveRecord::Schema.define(version: 2021_09_17_092501) do
+=======
+>>>>>>> 0ec7ad13c87f593f7053109a96e14881ae5710fa
 
 ActiveRecord::Schema.define(version: 2021_09_17_092501) do
   create_table "customers", force: :cascade do |t|
