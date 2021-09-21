@@ -18,6 +18,13 @@ class Item < ApplicationRecord
     preparing: 2,
     shipped: 3
 }
+
+
+    # 消費税を加えた商品価格
+ def add_tax_price
+        (self.price * 1.1).round
+ end
+
     
     def self.search(search)
       if search
@@ -27,5 +34,6 @@ class Item < ApplicationRecord
       end
      
     end
+
 
 end

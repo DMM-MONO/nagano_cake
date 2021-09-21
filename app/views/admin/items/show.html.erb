@@ -1,0 +1,19 @@
+<h1>商品詳細</h1>
+<%#= attachment_image_tag 保存先インスタンス名, :保存先カラム名, :fill, 幅, 高さ, format:'拡張子', fallback:"代替画像" %>
+<%= attachment_image_tag @item, :image,  format: 'jpeg', fallback: "no_image.jpg", size: "500x500" %>
+ <h4>商品名</h4>
+
+  <td><%= @item.name %></td>
+
+  <h4>商品説明</h4>
+  <%= @item.introduction %>
+
+   <h4>ジャンル</h4>
+   <%= @item.genre.name %>
+
+    <h4>税込価格（税抜き価格）</h4>
+    <%=  @item.add_tax_price.to_s(:delimited) %> 円　　　　<%#=税込価格%>
+    (<%= @item.price.to_s(:delimited) %>)円                                   <%#=税抜き価格%>
+     <h4>販売ステータス</h4>
+    <%= @item.is_active %>
+  <%= link_to "編集する",edit_admin_item_path(@item.id) %>
