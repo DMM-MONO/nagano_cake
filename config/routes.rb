@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   #URLにpublicを入れたくないためscope
   scope module: 'public' do
+    root to: 'homes#top'
     get 'about' => 'homes#about'
     get   'unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer'
     patch 'withdraw' => 'customers#withdraw', as: 'withdraw_customer'
@@ -20,4 +21,3 @@ Rails.application.routes.draw do
   end
 
 end
-  
