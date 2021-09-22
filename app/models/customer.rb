@@ -4,6 +4,8 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  #with_optionsで共通のバリデーションをまとめる
+
   has_many :shipping_addresses, dependent: :destroy
 
   validates :last_name, presence: true
@@ -27,6 +29,10 @@ class Customer < ApplicationRecord
 
   def full_name_kana
     self.last_name_kana + "" + self.first_name_kana
+  end
+  
+  def full_address
+    "〒" + self.post_code + " " + self.address + " " + self.name
   end
 
   #退会ステータス
