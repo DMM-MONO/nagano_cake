@@ -13,7 +13,7 @@
        <div class = "p-2 bd-highlight"><%= f.text_field :first_name, autofocus: true, required: true %></div>
     </div>
   </div>
-  
+
   <div class= "d-flex flex-row bd-highlight mb-3">
     <div calss="d-flex flex-row bd-highlight mb-3">
       <div class = "p-2 bd-highlight">フリガナ</div>
@@ -30,21 +30,21 @@
     <%= f.label :email,"メールアドレス" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-  
+
   <div class="field">
      <%= f.label :post_code,"郵便番号" %>
      <%= f.text_field :post_code, autofocus: true, autocomplete: "postcode" %>
   </div>
-  
+
   <div class="field">
     <%= f.label :address,"住所" %>
     <%= f.text_field :address, autocomplete: "address" %>
   </div>
-  
+
   <div class="field">
     <%= f.label :phone_number,"電話番号(ハイフンなし)" %>
     <%= f.text_field :phone_number, autocomplete: "phone_number" %>
-     
+
 
   <div class="field">
     <%= f.label :password,"パスワード" %>
@@ -63,5 +63,7 @@
     <%= f.submit "新規登録",class: "btn btn-primary" %>
   </div>
 <% end %>
+
+<h4>既に登録済みの方</h4>
 
 <%= render "devise/shared/links" %>
