@@ -6,6 +6,9 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# 標準 日本語化
+    #config.i18n.default_locale = :ja
+
 module WorkGithub
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
