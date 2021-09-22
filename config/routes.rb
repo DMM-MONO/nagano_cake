@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     get   'unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer'
     patch 'withdraw' => 'customers#withdraw', as: 'withdraw_customer'
-    resource  :customer,     only:[:show,:edit,:update]
+    resource  :customers,     only:[:edit,:update]
+    get 'customers/my_page' => 'customers#show', as: 'my_page_customer'
     resources :orders
     resources :shipping_addresses, only: [:index,:create,:edit,:update,:destroy]
   end
