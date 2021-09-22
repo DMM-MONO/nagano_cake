@@ -5,6 +5,7 @@ class Order < ApplicationRecord
   enum address: {'ご自身の住所': 0, '登録済住所住所から選択': 1, '新しいお届け先': 2 }
   
   belongs_to :customer
+  attr_accessor :shipping_address_id
   
   validates :post_code, presence: true
   validates :address, presence: true
