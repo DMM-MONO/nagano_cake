@@ -1,69 +1,74 @@
-<h2>新規会員</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 ">
+      <h2>新規会員登録</h2>
+      <%= form_with model: @customer, url:  customer_registration_path, local: true do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_with model: @customer, url:  customer_registration_path, local: true do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-　<div class= "d-flex flex-row bd-highlight mb-3">
-    <div class ="d-flex flex-row p-2 bd-highlight">
-      <div class = "p-2 bd-highlight">名前</div>
-      <div class = "p-2 bd-highlight"><%= f.label :last_name, "姓" %></div>
-      <div class = "p-2 bd-highlight"><%= f.text_field :last_name, autofocus: true, required: true %></div>
+　      <div class= "d-flex flex-row bd-highlight mb-3 ">
+         <div class ="d-flex flex-row p-2 bd-highlight">
+           <div class = "p-2 bd-highlight">名前</div>
+           <div class = "p-2 bd-highlight"><%= f.label :last_name, "(姓)" %></div>
+           <div class = "p-2 bd-highlight"><%= f.text_field :last_name, autofocus: true, required: true %></div>
+          </div>
+          <div class = "d-flex flex-row p-2 bd-highlight">
+           <div class = "p-2 bd-highlight"><%= f.label :first_name, "(名)" %></div>
+           <div class = "p-2 bd-highlight"><%= f.text_field :first_name, autofocus: true, required: true %></div>
+         </div>
+        </div>
+
+        <div class= "d-flex flex-row bd-highlight mb-3">
+         <div class ="d-flex flex-row p-2 bd-highlight">
+           <div class = "p-2 bd-highlight">フリガナ</div>
+           <div class = "p-2 bd-highlight"><%= f.label :last_name_kana, "(セイ)" %></div>
+           <div class = "p-2 bd-highlight"><%= f.text_field :last_name_kana, autofocus: true, required: true %></div>
+          </div>
+          <div class = "d-flex flex-row p-2 bd-highlight">
+           <div class = "p-2 bd-highlight"><%= f.label :first_name_kana, "(メイ)" %></div>
+           <div class = "p-2 bd-highlight"><%= f.text_field :first_name_kana, autofocus: true, required: true %></div>
+         </div>
+        </div>
+
+        <div class= "d-flex flex-row bd-highlight mb-3">
+            <div class = "p-2 bd-highlight"><%= f.label :email,"メールアドレス" %></div>
+            <div class = "p-2 bd-highlight"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
+        </div>
+
+        <div class= "d-flex flex-row bd-highlight mb-3">
+            <div class = "p-2 bd-highlight"><%= f.label :post_code,"郵便番号(ハイフンなし)" %></div>
+            <div class = "p-2 bd-highlight"><%= f.text_field :post_code, autofocus: true, autocomplete: "postcode" %></div>
+        </div>
+
+        <div class= "d-flex flex-row bd-highlight mb-3">
+            <div class = "p-2 bd-highlight"><%= f.label :address,"住所" %></div>
+            <div class = "p-2 bd-highlight"><%= f.text_field :address, autocomplete: "address" %></div>
+        </div>
+       <div class= "d-flex flex-row bd-highlight mb-3">
+            <div class = "p-2 bd-highlight"><%= f.label :phone_number,"電話番号(ハイフンなし)" %></div>
+            <div class = "p-2 bd-highlight"><%= f.text_field :phone_number, autocomplete: "phone_number" %></div>
+        </div>
+
+        <div class= "d-flex flex-row bd-highlight mb-3">
+            <div class = "p-2 bd-highlight"><%= f.label :password,"パスワード" %>
+                                            <% if @minimum_password_length %>
+                                              <em>(<%= @minimum_password_length %>文字以上)</em>
+                                            <% end %></div>
+            <div class = "p-2 bd-highlight"><%= f.password_field :password, autocomplete: "new-password" %></div>
+        </div>
+
+        <div class= "d-flex flex-row bd-highlight mb-3">
+            <div class = "p-2 bd-highlight"><%= f.label :password_confirmation,"パスワード(確認用)" %></div>
+            <div class = "p-2 bd-highlight"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
+        </div>
+
+        <div class= "actions">
+            <div class = "p-2 bd-highlight"><%= f.submit "新規登録",class: "btn btn-success btn-sm btn-block" %></div>
+        </div>
+
+      <% end %>
+
+      <h4>既に登録済みの方</h4>
+        <%= render "devise/shared/links" %>
     </div>
-    <div class = "d-flex flex-row p-2 bd-highlight">
-       <div class = "p-2 bd-highlight"><%= f.label :first_name, "名" %></div>
-       <div class = "p-2 bd-highlight"><%= f.text_field :first_name, autofocus: true, required: true %></div>
-    </div>
   </div>
-
-  <div class= "d-flex flex-row bd-highlight mb-3">
-    <div calss="d-flex flex-row bd-highlight mb-3">
-      <div class = "p-2 bd-highlight">フリガナ</div>
-      <div class = "p-2 bd-highlight"><%= f.label :last_name_kana, "セイ" %></div>
-      <div class = "p-2 bd-highlight"><%= f.text_field :last_name_kana, autofocus: true, required: true %></div>
-    </div>
-    <div calss="d-flex flex-row p-2 bd-highlight">
-      <div class = "p-2 bd-highlight"><%= f.label :first_name_kana, "メイ" %></div>
-      <div class = "p-2 bd-highlight"><%= f.text_field :first_name_kana, autofocus: true, required: true %></div>
-    </div>
-  </div>
-
-  <div class="field">
-    <%= f.label :email,"メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-     <%= f.label :post_code,"郵便番号" %>
-     <%= f.text_field :post_code, autofocus: true, autocomplete: "postcode" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address,"住所" %>
-    <%= f.text_field :address, autocomplete: "address" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone_number,"電話番号(ハイフンなし)" %>
-    <%= f.text_field :phone_number, autocomplete: "phone_number" %>
-
-
-  <div class="field">
-    <%= f.label :password,"パスワード" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation,"パスワード(確認用)" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録",class: "btn btn-primary" %>
-  </div>
-<% end %>
-
-<h4>既に登録済みの方</h4>
-
-<%= render "devise/shared/links" %>
+</div>
