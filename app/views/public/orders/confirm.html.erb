@@ -15,7 +15,7 @@
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td>
-                <div class="d-inline-flex"><%= attachment_image_tag cart_item.item, :image_id, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %></div>
+                <div class="d-inline-flex"><%= attachment_image_tag cart_item.item, :image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %></div>
                 <div class="d-inline-flex align-top"><%= cart_item.item.name %></div>
               </td>
               <td><%= ((cart_item.item.price*1.1).round) %></td>
@@ -75,11 +75,10 @@
       <%= f.hidden_field :payment_method %>
       <%= f.hidden_field :address_number %>
       <%= f.hidden_field :shipping_address_id %>
-      <%#=f.fields_for @shipping_address do |i| %>
-        <%#= i.hidden_field :post_code %>
-        <%#= i.hidden_field :address %>
-        <%#= i.hidden_field :name %>
-      <%# end %>
+      <%= f.hidden_field :total_payment, :value => @sum+800 %>
+      <%= f.hidden_field :post_code %>
+      <%= f.hidden_field :address %>
+      <%= f.hidden_field :name %>
       <div class="actions">
         <%= f.submit "注文を確定する",class: "btn-flat-success" %>
       </div>
