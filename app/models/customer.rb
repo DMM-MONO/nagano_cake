@@ -5,25 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :cart_items, dependent: :destroy
-  has_many :shipping_addresses, dependent: :destroy
-
-  def full_name
-    self.last_name + "" + self.first_name
-  end
-
-  def full_name_kana
-    self.last_name_kana + "" + self.first_name_kana
-  end
-  
-  def full_address
-    "〒" + self.post_code + " " + self.address + " " + self.name
-  end
-
-  #退会ステータス
-  enum is_deleted: {
-    有効: false,
-    退会: true,
-  }
+  #with_optionsで共通のバリデーションをまとめる
   
     validates :first_name, presence:true
     validates :last_name, presence:true
@@ -33,6 +15,5 @@ class Customer < ApplicationRecord
     validates :address, presence:true
     validates :phone_number, format: { with: /\A\d{10,11}\z/}, presence:true #電話番号は10桁か11桁
   
-
 
 end
