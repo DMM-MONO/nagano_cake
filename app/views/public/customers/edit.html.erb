@@ -3,7 +3,7 @@
     <h5 class="two-line-heading">会員情報編集</h5>
   </div>
 
-  <%= form_with model: @customer, url: customer_path, local: true do |f| %>
+  <%= form_with model: @customer, url: customers_path, local: true do |f| %>
     <div class="row mt-3">
       <div class="col-2"><%= f.label "名前", class:"w-100" %></div>
       <div class="col-1 text-right p-0">(姓)　</div>

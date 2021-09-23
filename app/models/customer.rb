@@ -8,6 +8,7 @@ class Customer < ApplicationRecord
   has_many :shipping_addresses, dependent: :destroy
   has_many :orders, dependent: :destroy
 
+
   def full_name
     self.last_name + "" + self.first_name
   end
@@ -17,7 +18,7 @@ class Customer < ApplicationRecord
   end
   
   def full_address
-    "〒" + self.post_code + " " + self.address + " " + self.name
+    "〒" + self.post_code + ""+ self.address
   end
 
   #退会ステータス

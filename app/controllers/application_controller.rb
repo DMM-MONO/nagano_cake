@@ -9,8 +9,6 @@ class ApplicationController < ActionController::Base
                                                        :post_code, :address, :phone_number])
   end
 
-  def after_sign_up_path_for(resource)
-    customer_path# 新規登録後にマイページへ遷移させたいが現在できない
-  end
+
 
 end
