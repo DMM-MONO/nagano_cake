@@ -1,4 +1,26 @@
 Rails.application.routes.draw do
+  
+   scope module: 'public' do
+    root to: 'homes#top'
+    get 'about' => 'homes#about'
+    get   'unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer'
+    patch 'withdraw' => 'customers#withdraw', as: 'withdraw_customer'
+    resource  :customers,     only:[:edit,:update]
+    get 'customers/my_page' => 'customers#show', as: 'my_page_customer'
+    resources :orders do
+      collection do
+        post 'confirm'
+      end
+    end
+     
+    resources :shipping_addresses, only: [:index,:create,:edit,:update,:destroy]
+    resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :create, :update, :destroy] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+  end
 
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
@@ -21,22 +43,6 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
  end
 
-  #URLにpublicを入れたくないためscope
-  scope module: 'public' do
-    root to: 'homes#top'
-    get 'about' => 'homes#about'
-    get   'unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe_customer'
-    patch 'withdraw' => 'customers#withdraw', as: 'withdraw_customer'
-    resource  :customers,     only:[:edit,:update]
-    get 'customers/my_page' => 'customers#show', as: 'my_page_customer'
-    resources :orders
-    resources :shipping_addresses, only: [:index,:create,:edit,:update,:destroy]
-    resources :items, only: [:index, :show]
-    resources :cart_items, only: [:index, :create, :update, :destroy] do
-      collection do
-        delete 'destroy_all'
-      end
-    end
-  end
+ 
 
 end
