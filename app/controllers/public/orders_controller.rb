@@ -35,6 +35,7 @@ class Public::OrdersController < ApplicationController
       #@order.name = @shipping_address.name
       #ここまで
       @order.save!
+      
       redirect_to my_page_customer_path
     end
     
