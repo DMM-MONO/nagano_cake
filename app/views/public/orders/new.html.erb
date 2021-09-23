@@ -31,34 +31,32 @@
           <%= f.radio_button :address_number, "2" %>
           <%= f.label :address_number,"新しいお届け先" %>
         </div>
-        <%=f.fields_for @shipping_address, class:"mt-3" do |i| %>
           <div class="row ml-3">
             <div class="col-4">
-              <%= i.label :post_code,"郵便番号（ハイフンなし）" %>
+              <%= f.label :post_code,"郵便番号（ハイフンなし）" %>
             </div>
             <div class="col-6">
-              <%= i.text_field :post_code, placeholder: "0000000", class:"w-100", id:"zip" %>
+              <%= f.text_field :post_code, placeholder: "0000000", class:"w-100", id:"zip" %>
             </div>
           </div>
 
           <div class="row ml-3">
             <div class="col-4">
-              <%= i.label :address,"住所" %>
+              <%= f.label :address,"住所" %>
             </div>
             <div class="col-6">
-              <%= i.text_field :address, placeholder: "ああああああああ", class:"w-100", id:"address" %>
+              <%= f.text_field :address, placeholder: "ああああああああ", class:"w-100", id:"address" %>
             </div>
           </div>
 
           <div class="row ml-3">
             <div class="col-4">
-              <%= i.label :name,"宛名" %>
+              <%= f.label :name,"宛名" %>
             </div>
             <div class="col-6">
-              <%= i.text_field :address, placeholder: "1111", class:"w-100" %>
+              <%= f.text_field :name, placeholder: "1111", class:"w-100" %>
             </div>
           </div>
-        <% end %>
 
         <div class="actions ml-3">
           <%= f.submit "確認画面へ進む",class: "btn-flat-primary btn-sm" %>
