@@ -4,6 +4,8 @@ class Order < ApplicationRecord
   enum payment_method: { 'クレジット': 0, '銀行振込': 1 }
   
   belongs_to :customer
+  belongs_to :order_details
+  
   
   validates :post_code, presence: true
   validates :address, presence: true
