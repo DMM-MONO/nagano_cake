@@ -8,53 +8,56 @@
     <% else %>
       <a class="navbar-brand" href="/"><span>Nagano Cake</span></a>
     <% end %>
-
-      <div class="collapse navbar-collapse navbar-right">
-        <ul class="nav navbar-nav ml-auto">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %><%#顧客がログインした場合%>
-          <li class="customer-name">
-            ようこそ、<%= current_customer.last_name %> さん!
+          <li class="customer-name  mx-5 mt-2">
+            <span>ようこそ、<%= current_customer.last_name %> さん !</span>
           </li>
-          <li>
-            <%= link_to "マイページ", my_page_customer_path, class: "btn btn-outline-dark" %>
+          <li class="nav-item">
+            <%= link_to "マイページ", my_page_customer_path, class: "btn btn-outline-dark mx-2" %>
           </li>
-          <li>
-            <%= link_to "商品一覧",  items_path, class: "btn btn-outline-dark" %>
+
+          <li class="nav-item">
+            <%= link_to "商品一覧", items_path, class: "btn btn-outline-dark mx-2" %>
           </li>
-          <li>
-            <%= link_to "カート", cart_items_path, class: "btn btn-outline-dark" %>
+          <li class="nav-item">
+            <%= link_to "カート", cart_items_path, class: "btn btn-outline-dark mx-2" %>
           </li>
-          <li>
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-dark" %>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-dark btn-light mx-2" %>
           </li>
         <% elsif admin_signed_in? %><%#管理者がログインした場合%>
-          <li>
-            <%= link_to "商品一覧", root_path, class: "btn btn-outline-dark" %>
+          <li class="nav-item">
+            <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-dark mx-2" %>
           </li>
-          <li>
-            <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-dark" %>
+          <li class="nav-item">
+            <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-dark mx-2" %>
           </li>
-          <li>
-            <%= link_to "注文履歴一覧", root_path, class: "btn btn-outline-dark" %>
+          <li class="nav-item">
+            <%= link_to "注文履歴一覧", root_path, class: "btn btn-outline-dark mx-2" %>
           </li>
-          <li>
-            <%= link_to "ジャンル一覧", root_path, class: "btn btn-outline-dark" %>
+          <li class="nav-item">
+            <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-dark mx-2" %>
           </li>
-          <li>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark" %>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark mx-2" %>
           </li>
         <% else %><%#管理者のログイン前、サイトの閲覧のみ%>
-          <li>
-            <%= link_to "About", about_path, class: "btn btn-outline-dark" %>
+          <li class="nav-item">
+            <%= link_to "About", about_path, class: "btn btn-outline-dark mx-2" %>
           </li>
-          <li>
-            <%= link_to "商品一覧", root_path, class: "btn btn-outline-dark" %>
+          <li class="nav-item">
+            <%= link_to "商品一覧", items_path, class: "btn btn-outline-dark mx-2" %>
           </li>
-          <li>
-            <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-dark" %>
+          <li class="nav-item">
+            <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-dark mx-2" %>
           </li>
-          <li>
-            <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-dark" %>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-dark btn-light mx-2" %>
           </li>
         <% end %>
         </ul>
