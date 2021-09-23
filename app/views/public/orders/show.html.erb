@@ -7,7 +7,7 @@
         <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         <td>配送先</td>
         <td>
-            <%= @order.postal_code %>
+            <%= @order.post_code %>
             <%= @order.address %>
             <%= @order.name %>
         </td>
@@ -24,9 +24,9 @@
         <td>商品合計</td>
         <td></td>
         <td>配送料</td>
-        <td><%= @order.shipping_cost %></td>
+        <td><%= @order.postage %></td>
         <td>ご請求額</td>
-        <td><%= @order.toral_payment %></td>
+        <td><%= @order.total_payment %></td>
     </tr>
 </table>
 

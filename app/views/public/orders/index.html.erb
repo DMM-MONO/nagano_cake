@@ -20,16 +20,20 @@
         <tr>
             <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
             <td>
-                <%= order.postal_code %>
-                <%= order.address %>
+                <%= order.post_code %></br>
+                <%= order.address %></br>
                 <%= order.name %>
             </td>
-            <td><%= order.order_details.item.name%></td>
+            <td>
+                <% order.order_details.each do |order_detail| %>
+                <%= order_detail.item.name%>
+                <% end %>
+            </td>
             <td><%= order.total_payment %>円</td>
             <td>
                 <%= %>
             </td>
-            <td><%= link_to 表示する, order_path(order.id) %></td>
+            <td><%= link_to "表示する", order_path(order.id) %></td>
         </tr>
         <% end %>
     </tbody>
