@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Publics::RegistrationsController < Devise::RegistrationsController
+  def after_sign_up_path_for(resource)
+    my_page_customer_path(resource)# 新規登録後にマイページへ遷移させる
+  end
 
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
