@@ -2,7 +2,7 @@ class Public::ItemsController < ApplicationController
 
     def index
         @items = Item.search(params[:genre_id])
-        @items = Item.where(is_active: true)
+        #@items = Item.where(is_active: true)
         @item = Item.page(params[:page])
         @genres = Genre.all
         if params[:genre_id]

@@ -15,7 +15,7 @@
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td>
-                <div class="d-inline-flex"><%= attachment_image_tag cart_item.item, :image_id, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %></div>
+                <div class="d-inline-flex"><%= attachment_image_tag cart_item.item, :image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %></div>
                 <div class="d-inline-flex align-top"><%= cart_item.item.name %></div>
               </td>
               <td><%= ((cart_item.item.price*1.1).round) %></td>
@@ -23,7 +23,7 @@
               <td><%= ((cart_item.item.price*1.1).round)*(cart_item.amount) %>
                   <% @sum += ((cart_item.item.price*1.1).round)*(cart_item.amount) %>
               </td>
-              
+
             </tr>
           <% end %>
         </tbody>
