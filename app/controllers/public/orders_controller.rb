@@ -59,6 +59,17 @@ class Public::OrdersController < ApplicationController
         @shipping_address.name = order_params[:name]
         @shipping_address.save
       end
+      @order.save
+      current_customer.cart_items.each do |cart_item|
+          @order_details = @order.order_details.new
+          @order_details.order_id = @order.id
+          @order_details.item_id = cart_item.item_id
+          @order_details.price = cart_item.item.price
+          @order_details.amount = cart_item.amount
+          # @order_details.status = 1
+          @order_details.save
+          cart_item.destroy
+        end
       redirect_to my_page_customer_path
     end
     
