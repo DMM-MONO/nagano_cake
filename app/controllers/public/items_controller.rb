@@ -1,9 +1,9 @@
 class Public::ItemsController < ApplicationController
 
     def index
-        @items = Item.search(params[:genre_id])
-        @items = Item.where(is_active: true)
-        @item = Item.page(params[:page])
+        @item = Item.all
+        @items = Item.search(params[:genre_id]).page(params[:page]).per(10)
+        # @items = Item.where(is_active: true)
         @genres = Genre.all
         if params[:genre_id]
             @genre = Genre.find(params[:genre_id])
