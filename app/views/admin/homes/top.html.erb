@@ -15,13 +15,12 @@
  <tbody>
  <% @orders.each do |order| %>
  <tr>
-   <td><%= link_to order_path(@order.id), order.created_at %></td>
-   <td><%=order.full_name %></td>
-   <td><%=order.amount %></td>
-   <td class="status"><%= order.status %></td>
-  <% else %>
-  <td><%= order.status %></td>
-  <% end %>
+<
+   <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
+   <td><%= order.name %></td>
+   <td><%= order.order_details.sum(:amount) %></td>
+   <td><%= order.status %></td>
+  
 <% end %>
  </tr>
  </tbody>

@@ -3,7 +3,6 @@ class Public::OrdersController < ApplicationController
     def new
         @order=Order.new
         @shipping_address=ShippingAddress.new
-        
     end
     
     def index
@@ -20,26 +19,39 @@ class Public::OrdersController < ApplicationController
         @address_number=order_params[:address_number]
         @shipping_address_id=order_params[:shipping_address_id]
         if @address_number == "0"
-          @order.address = current_customer.address
-          @order.post_code = current_customer.post_code
-          @order.name = current_customer.full_name
+          @shipping_address=ShippingAddress.new
         elsif @address_number == "1"
           @shipping_address=ShippingAddress.find(@shipping_address_id)
           @order.address = @shipping_address.post_code
           @order.post_code = @shipping_address.address
           @order.name = @shipping_address.name
         else
-          @shipping_address=ShippingAddress.new
-          @shipping_address.post_code = order_params[:post_code]
-          @shipping_address.address = order_params[:address]
-          @shipping_address.name = order_params[:name]
+          @shipping_address=ShippingAddress.new(shipping_address_params[:shipping_address])
+
         end
          
     end 
     
     def create
-      @address_number=order_params[:address_number]
       @order = Order.new(order_params)
+
+      @address_number=order_params[:address_number]
+      @address_number == "0"
+      @order.post_code = Customer.find(current_customer.id).post_code
+      @order.address = Customer.find(current_customer.id).address
+      @order.name = Customer.find(current_customer.id).full_name
+      #if文
+      #@shipping_address=ShippingAddress.find(@shipping_address_id)
+      #@order.post_code = @shipping_address.post_code
+      #@order.address = @shipping_address.address
+      #@order.name = @shipping_address.name
+      #ここまで
+      @order.save!
+      
+      
+      
+      redirect_to my_page_customer_path
+
       @shipping_address_id = order_params[:shipping_address_id]
       if @address_number == "2"
         @order.save
@@ -53,6 +65,9 @@ class Public::OrdersController < ApplicationController
         @order.save
       end
 
+        redirect_to my_page_customer_path
+
+
       @order.save
       current_customer.cart_items.each do |cart_item|
           @order_details = @order.order_details.new
@@ -65,6 +80,7 @@ class Public::OrdersController < ApplicationController
           cart_item.destroy
         end
       redirect_to my_page_customer_path
+
 
     end
       
@@ -94,7 +110,11 @@ class Public::OrdersController < ApplicationController
     private
     
     def order_params
-    params.require(:order).permit(:name, :payment_method,:address_number,:shipping_address_id, :shipping_address, :post_code, :address, :total_payment).merge(customer_id: current_customer.id ,postage: 800)
+    params.require(:order).permit(:payment_method,:address_number,:shipping_address_id, :shipping_address, :post_code, :address).merge(customer_id: current_customer.id ,postage: 800)
+    end
+
+    def shipping_address_params
+    params.require(:order).permit(shipping_address:[:post_code, :address, :name, :shipping_address])
     end
 
 end
