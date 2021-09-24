@@ -5,6 +5,14 @@ class Public::OrdersController < ApplicationController
         @shipping_address=ShippingAddress.new
     end
     
+    def index
+        @orders = Order.all
+    end
+    
+    def show
+        @order = Order.find(params[:id])
+    end
+    
     def confirm
         @cart_items=CartItem.where(customer_id:current_customer.id)
         @order=Order.new(order_params)
@@ -56,7 +64,23 @@ class Public::OrdersController < ApplicationController
       else
         @order.save
       end
+
         redirect_to my_page_customer_path
+
+
+      @order.save
+      current_customer.cart_items.each do |cart_item|
+          @order_details = @order.order_details.new
+          @order_details.order_id = @order.id
+          @order_details.item_id = cart_item.item_id
+          @order_details.price = cart_item.item.price
+          @order_details.amount = cart_item.amount
+          # @order_details.status = 1
+          @order_details.save
+          cart_item.destroy
+        end
+      redirect_to my_page_customer_path
+
 
     end
       
@@ -94,4 +118,3 @@ class Public::OrdersController < ApplicationController
     end
 
 end
-
