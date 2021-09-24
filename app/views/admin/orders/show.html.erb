@@ -1,17 +1,12 @@
 <h1>注文詳細</h1>
 
  <h4>購入者</h4>
-<<<<<<< HEAD
   <td><%= @order.name %></td>
-=======
-  <td><%= @order.full_name %></td>
->>>>>>> origin/cake
 
   <h4>注文日</h4>
-  <%= @order.created_at %>
+  <%= @order.created_at.strftime('%Y/%m/%d') %>
 
    <h4>配送先</h4>
-<<<<<<< HEAD
     〒<%= @order.post_code %>
    <%= @order.address %>
    <%= @order.name %>
@@ -22,16 +17,6 @@
     <%= @order.status %>
   <%#= link_to "編集する",admin_customer_path(@customer.id) %>
 
-=======
-   <%= @order.address %>
-
-    <h4>支払い方法</h4>
-    <%=  @item.payment_method %> 
-     <h4>注文ステータス</h4>
-    <%= @item.status %>
-  <%= link_to "編集する",admin_customer_path(@customer.id) %>
-  
->>>>>>> origin/cake
    <table class="table table-bordered genre-table">
               <thead>
                 <tr>
@@ -43,8 +28,7 @@
                 </tr>
               </thead>
               <tbody>
-<<<<<<< HEAD
-               
+
                 <% @order_details.each do |order_detail| %>
                 <tr>
                   <td>
@@ -53,23 +37,11 @@
                   <td><%= order_detail.amount %></td>
                   <td><%= ((order_detail.price*1.1).round)*(order_detail.amount) %>
                       <% @sum += ((order_detail.price*1.1).round)*(order_detail.amount) %>
-=======
-                <% @sum = 0 %>
-                <% @order.each do |order| %>
-                <tr>
-                  <td>
-                    <%= order.item.name %></td>
-                  <td><%= (order.item.price*1.1).round %></td>
-                  <td><%= order.amount %></td>
-                  <td><%= ((order.item.price*1.1).round)*(order.amount) %>
-                      <% @sum += ((order.item.price*1.1).round)*(order.amount) %>
->>>>>>> origin/cake
                   </td>
                 </tr>
                   <% end %>
               </tbody>
             </table>
-<<<<<<< HEAD
 
              <table class="table table-bordered ">
 	            <tbody>
@@ -87,9 +59,3 @@
                </tr>
               </tbody>
                </table>
-=======
-　　　      商品合計<%= @sum %>
-　　　      送料
-　　　      請求合計金額
-   
->>>>>>> origin/cake
