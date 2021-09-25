@@ -8,7 +8,7 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.integer :postage
       t.integer :total_payment
       t.integer :payment_method
-      t.integer :status
+      t.integer :status, default: "入金待ち"
 
       t.timestamps
     end
