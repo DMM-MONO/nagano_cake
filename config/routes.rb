@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  
    scope module: 'public' do
     root to: 'homes#top'
     get 'about' => 'homes#about'
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
         post 'confirm'
       end
     end
-
+     
     resources :shipping_addresses, only: [:index,:create,:edit,:update,:destroy]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy] do
@@ -41,10 +41,13 @@ Rails.application.routes.draw do
     resources :genres, only: [:edit, :create, :index, :update]
     resources :items
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders
-    resources :order_details
+
+
+    resources :orders, only: [:update, :show]
+    resources :order_details, only: [:update]
+
  end
 
-
+ 
 
 end
