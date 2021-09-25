@@ -1,7 +1,7 @@
 class Public::OrdersController < ApplicationController
 
     before_action :authenticate_customer!
-  
+
     def complete
     end
 
@@ -9,11 +9,11 @@ class Public::OrdersController < ApplicationController
         @order=Order.new
         @shipping_address=ShippingAddress.new
     end
-    
+
     def index
         @orders = Order.all
     end
-    
+
     def show
         @order = Order.find(params[:id])
     end
@@ -39,7 +39,7 @@ class Public::OrdersController < ApplicationController
         @shipping_address.name = order_params[:name]
       end
     end
-    
+
 
     def create
       @order = Order.new(order_params)
@@ -49,6 +49,7 @@ class Public::OrdersController < ApplicationController
       @order.address = Customer.find(current_customer.id).address
       @order.name = Customer.find(current_customer.id).full_name
       @order.save!
+
       @shipping_address_id = order_params[:shipping_address_id]
       if @address_number == "2"
         @order.save
@@ -73,9 +74,9 @@ class Public::OrdersController < ApplicationController
         end
       redirect_to complete_orders_path
     end
-  
-    private
 
+    private
+    
     def order_params
     params.require(:order).permit(:name, :payment_method,:address_number,:shipping_address_id, :shipping_address, :post_code, :address, :total_payment).merge(customer_id: current_customer.id ,postage: 800)
     end
