@@ -7,6 +7,8 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :shipping_addresses, dependent: :destroy
   has_many :orders, dependent: :destroy
+
+
   def full_name
     self.last_name + "" + self.first_name
   end
@@ -24,6 +26,7 @@ class Customer < ApplicationRecord
     有効: false,
     退会: true,
   }
+
   
     validates :first_name, presence:true
     validates :last_name, presence:true
@@ -33,6 +36,5 @@ class Customer < ApplicationRecord
     validates :address, presence:true
     validates :phone_number, format: { with: /\A\d{10,11}\z/}, presence:true #電話番号は10桁か11桁
   
-
 
 end
