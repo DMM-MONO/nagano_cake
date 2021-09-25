@@ -1,7 +1,17 @@
 # frozen_string_literal: true
 
 class Publics::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
+ before_action :reject_inactive_user, only: [:create]
+ 
+  def reject_inactive_user
+    customer = Customer.find_by(email: sign_in_params[:email])
+    if customer.is_deleted == "退会"
+      flash[:notice] = 'このユーザーは退会したユーザーです。'
+      redirect_to root_path
+    end
+  end
+
+
 
   # GET /resource/sign_in
   # def new
