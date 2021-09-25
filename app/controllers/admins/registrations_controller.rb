@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Admins::RegistrationsController < Devise::RegistrationsController
+  def after_sign_up_path_for(resource)
+    admin_path#管理者新規登録後に管理者のtopページ（注文履歴一覧）に遷移
+  end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
