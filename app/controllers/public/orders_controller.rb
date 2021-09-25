@@ -1,15 +1,18 @@
 class Public::OrdersController < ApplicationController
-    
+
+    before_action :authenticate_customer!
+  
     def complete
     end
-    
+
     def new
         @order=Order.new
         @shipping_address=ShippingAddress.new
-        
+
     end
-    
+
     def confirm
+
       @cart_items=CartItem.where(customer_id:current_customer.id)
       @order=Order.new(order_params)
       @address_number=order_params[:address_number]
@@ -31,6 +34,7 @@ class Public::OrdersController < ApplicationController
       end
     end
     
+
     def create
       @address_number=order_params[:address_number]
       @order = Order.new(order_params)
@@ -49,10 +53,9 @@ class Public::OrdersController < ApplicationController
       end
       redirect_to complete_orders_path
     end
-      
-   
+  
     private
-    
+
     def order_params
     params.require(:order).permit(:name, :payment_method,:address_number,:shipping_address_id, :shipping_address, :post_code, :address, :total_payment).merge(customer_id: current_customer.id ,postage: 800)
     end

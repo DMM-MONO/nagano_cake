@@ -6,7 +6,7 @@ class Admins::SessionsController < Devise::SessionsController
   end
 
   def after_sign_out_path_for(resource)
-    admin_path#管理者ログアウト後に管理者のtopページ（注文履歴一覧）に遷移
+    new_admin_session_path#管理者ログアウト後に管理者のtopページ（注文履歴一覧）に遷移
   end
   # before_action :configure_sign_in_params, only: [:create]
 

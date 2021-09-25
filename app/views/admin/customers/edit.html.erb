@@ -1,34 +1,55 @@
-<h2><%=@customer.full_name %> さんの会員情報編集</h2>
+<div class="container">
+  <div class="row mt-5">
+    <h5 class="two-line-heading"><%=@customer.full_name %> さんの会員情報編集</h5>
+  </div>
+   <%= form_with model:@customer, url:admin_customer_path(@customer.id), local:true do |f| %>
+    <div class="row mt-3">
+      <div class="col-3">会員ID</div>
+      <div class="col-3"><%= @customer.id %></div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2"><%= f.label "氏名", class:"w-100" %></div>
+      <div class="col-1 text-right p-0">(姓)　</div>
+      <div class="col-3"><%= f.text_field :last_name, placeholder: "姓", class:"w-100" %></div>
+      <div class="col-1 text-right p-0">(名)　</div>
+      <div class="col-3"><%= f.text_field :first_name, placeholder: "名", class:"w-100" %></div>
+    </div>
 
-<%= form_with model:@customer, url:admin_customer_path(@customer.id), local:true do |f| %>
-<h4>会員ID</h4>
-<%= @customer.id %>
+    <div class="row mt-3">
+      <div class="col-2"><%= f.label "フリガナ", class:"w-100" %></div>
+      <div class="col-1 text-right p-0">(セイ)</div>
+      <div class="col-3"><%= f.text_field :last_name_kana, placeholder: "セイ", class:"w-100" %></div>
+      <div class="col-1 text-right p-0">(メイ)</div>
+      <div class="col-3"><%= f.text_field :first_name_kana, placeholder: "メイ", class:"w-100" %></div>
+    </div>
 
-<h4>氏名</h4>
-<%= f.text_field :last_name %>
-<%= f.text_field :first_name %>
+    <div class="row mt-3">
+      <div class="col-3"><%= f.label "郵便番号(ハイフンなし)", class:"w-100" %></div>
+      <div class="col-3"><%= f.text_field :post_code, placeholder: "0000000", class:"w-100"%></div>
+    </div>
 
-<h4>フリガナ</h4>
-<%= f.text_field :last_name_kana %>
-<%= f.text_field :first_name_kana %>
+    <div class="row mt-3">
+      <div class="col-3"><%= f.label "住所", class:"w-100" %></div>
+      <div class="col-7"><%= f.text_field :address, placeholder: "住所", class:"w-100" %></div>
+    </div>
 
-<h4>郵便番号</h4>
-<%= f.text_field :post_code %>
-<h4>住所</h4>
-<%= f.text_field :address %>
-<h4>電話番号</h4>
-<%= f.text_field :phone_number %>
-<h4>メールアドレス</h4>
-<%= f.text_field :email %>
-<h4>会員ステータス</h4>
-<div>
-<%= f.radio_button :is_deleted, "有効" %>
-<%= f.label :is_deleted, "有効", value:"有効" %>
+    <div class="row mt-3">
+      <div class="col-3"><%= f.label "電話番号(ハイフンなし)", class:"w-100" %></div>
+      <div class="col-3"><%= f.text_field :phone_number, placeholder: "00000000000", class:"w-100" %></div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-3"><%= f.label "メールアドレス", class:"w-100" %></div>
+      <div class="col-3"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class:"w-100" %></div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-3"><%= f.label :"会員ステータス", class:"w-100" %></div>
+      <div class="col-3"><%= f.radio_button :is_deleted, "有効" %><%= f.label :is_deleted, "有効", value:"有効" %></div>
+      <div class="col-1"><%= f.radio_button :is_deleted, "退会" %><%= f.label :is_deleted, "退会", value:"退会" %></div>
+    </div>
+    <div class="row mt-4 mb-5">
+      <div class="col-3"></div>
+      <div class="col-3"><%= f.submit "変更を保存", class: "btn btn-success" %></div>
+    </div>
+  <% end %>
 </div>
-<div>
-<%= f.radio_button :is_deleted, "退会" %>
-<%= f.label :is_deleted, "退会", value:"退会" %>
-</div>
-<br>
-<%= f.submit "変更を保存" %>
-<% end %>
