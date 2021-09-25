@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :orders do
       collection do
         post 'confirm'
+        get 'complete'
       end
     end
      
@@ -41,6 +42,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:edit, :create, :index, :update]
     resources :items
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders
  end
 
  
