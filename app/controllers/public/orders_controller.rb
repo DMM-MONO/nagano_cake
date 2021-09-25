@@ -34,7 +34,6 @@ class Public::OrdersController < ApplicationController
     
     def create
       @order = Order.new(order_params)
-
       @address_number=order_params[:address_number]
       @address_number == "0"
       @order.post_code = Customer.find(current_customer.id).post_code
