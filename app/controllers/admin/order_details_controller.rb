@@ -1,5 +1,6 @@
 class Admin::OrderDetailsController < ApplicationController
   def update
+
     @order_detail = OrderDetail.find(params[:id])
     @order = @order_detail.order
     @order_detail.update(order_params)
@@ -23,8 +24,10 @@ class Admin::OrderDetailsController < ApplicationController
     redirect_to admin_order_path(@order)
     
   end
+  
   private
   def order_params
      params.require(:order_detail).permit(:making_status)
+
   end
 end
