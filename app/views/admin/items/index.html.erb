@@ -29,7 +29,7 @@
   <% if item.is_active == "販売中" %>
   <td class="active"><%= item.is_active %></td>
   <% else %>
-  <td><%= item.is_active %></td>
+  <td class="no-active"><%= item.is_active %></td>
   <% end %>
 <% end %>
 </tr>
