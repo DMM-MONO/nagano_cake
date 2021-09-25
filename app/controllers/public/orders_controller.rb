@@ -49,11 +49,6 @@ class Public::OrdersController < ApplicationController
       @order.address = Customer.find(current_customer.id).address
       @order.name = Customer.find(current_customer.id).full_name
       @order.save!
-      
-      
-      
-      redirect_to my_page_customer_path
-
       @shipping_address_id = order_params[:shipping_address_id]
       if @address_number == "2"
         @order.save
@@ -76,17 +71,13 @@ class Public::OrdersController < ApplicationController
           @order_details.save
           cart_item.destroy
         end
-      redirect_to my_page_customer_path
+      redirect_to complete_orders_path
     end
   
     private
 
     def order_params
-    params.require(:order).permit(:payment_method,:address_number,:shipping_address_id, :shipping_address, :post_code, :address).merge(customer_id: current_customer.id ,postage: 800)
-    end
-
-    def shipping_address_params
-    params.require(:order).permit(shipping_address:[:post_code, :address, :name, :shipping_address])
+    params.require(:order).permit(:name, :payment_method,:address_number,:shipping_address_id, :shipping_address, :post_code, :address, :total_payment).merge(customer_id: current_customer.id ,postage: 800)
     end
 
 end
