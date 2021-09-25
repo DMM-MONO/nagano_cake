@@ -76,7 +76,7 @@ class Public::OrdersController < ApplicationController
     end
 
     private
-
+    
     def order_params
     params.require(:order).permit(:name, :payment_method,:address_number,:shipping_address_id, :shipping_address, :post_code, :address, :total_payment).merge(customer_id: current_customer.id ,postage: 800)
     end
