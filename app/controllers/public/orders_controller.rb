@@ -61,10 +61,6 @@ class Public::OrdersController < ApplicationController
           cart_item.destroy
         end
       
-      
-      
-     
-
       @shipping_address_id = order_params[:shipping_address_id]
       if @address_number == "2"
         @order.save
