@@ -1,4 +1,11 @@
-<h1>商品新規登録</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 my-5">
+      <h2>商品新規登録</h2>
+    </div>
+  </div>
+</div>
+</div><h1></h1>
 <%= form_with model:@item, url:'/admin/items', local:true do |f| %>
   <h4>商品画像</h4>
   <%= f.attachment_field :image %>
