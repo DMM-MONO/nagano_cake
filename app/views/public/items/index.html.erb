@@ -19,7 +19,7 @@
           </tbody>
         </table>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-9 offset-md-1">
         <h2>
           <% if @genre %>
             <%= @genre.name %> 一覧
@@ -32,17 +32,19 @@
           <% @items.each do |item| %>
           <% if item.is_active == "販売中" %>
             <div>
-                  <%= link_to (attachment_image_tag item, :image, size: "100x100"), item_path(item.id) %>
+                  <%= link_to (attachment_image_tag item, :image, format: 'jpeg', fallback: 'no_image.jpg', size: "200x100"), item_path(item.id) %>
                   <p><%=  item.name %></p>
                   <p>￥<%= item.price %></p>
             </div>
             <% end %>
           <% end %>
         </div>
-        <%= paginate @items %>
+
       </div>
+    </div>
+    <div class="row">
+      <div class="mx-auto"><%= paginate @items %></div>
     </div>
   </div>
 </div>
 
-  
