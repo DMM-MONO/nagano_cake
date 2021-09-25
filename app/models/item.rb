@@ -11,8 +11,8 @@ class Item < ApplicationRecord
     販売中: true,
     販売停止中: false,
    }
-   
-   
+
+
    # 注文ステータス（0=支払待ち / 1=支払済み / 2=発送準備中 / 3=発送済み）
    enum order_status: {
     waiting: 0,
@@ -27,14 +27,14 @@ class Item < ApplicationRecord
         (self.price * 1.1).round
  end
 
-    
+
     def self.search(search)
       if search
         Item.where("genre_id = #{search}")
       else
         Item.all
       end
-     
+
     end
 
 

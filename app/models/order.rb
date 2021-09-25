@@ -20,6 +20,7 @@ class Order < ApplicationRecord
   validates :name, presence: true
   validates :postage, presence: true
   validates :payment_method, presence: true
+  validates :status, presence: true
   validates :customer_id, presence: true
 
 
