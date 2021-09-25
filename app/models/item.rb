@@ -3,6 +3,8 @@ class Item < ApplicationRecord
   attachment :image
 
    has_many :cart_items, dependent: :destroy
+   has_many :order_details, dependent: :destroy
+   
    belongs_to :genre
    # 販売ステータス０販売中 １販売停止
    enum is_active: {
