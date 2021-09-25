@@ -25,6 +25,9 @@ class Public::OrdersController < ApplicationController
           @order.address = @shipping_address.post_code
           @order.post_code = @shipping_address.address
           @order.name = @shipping_address.name
+          @order.address = @shipping_address.post_code
+          @order.post_code = @shipping_address.address
+          @order.name = @shipping_address.name
         else
           @shipping_address=ShippingAddress.new(shipping_address_params[:shipping_address])
 
@@ -33,6 +36,7 @@ class Public::OrdersController < ApplicationController
     end 
     
     def create
+
       @order = Order.new(order_params)
 
       @address_number=order_params[:address_number]
@@ -47,10 +51,20 @@ class Public::OrdersController < ApplicationController
       #@order.name = @shipping_address.name
       #ここまで
       @order.save!
+      current_customer.cart_items.each do |cart_item|
+          @order_details = @order.order_details.new
+          @order_details.order_id = @order.id
+          @order_details.item_id = cart_item.item_id
+          @order_details.price = cart_item.item.price
+          @order_details.amount = cart_item.amount
+          # @order_details.status = 1
+          @order_details.save
+          cart_item.destroy
+        end
       
       
       
-      redirect_to my_page_customer_path
+     
 
       @shipping_address_id = order_params[:shipping_address_id]
       if @address_number == "2"
@@ -68,21 +82,30 @@ class Public::OrdersController < ApplicationController
         redirect_to my_page_customer_path
 
 
-      @order.save
-      current_customer.cart_items.each do |cart_item|
-          @order_details = @order.order_details.new
-          @order_details.order_id = @order.id
-          @order_details.item_id = cart_item.item_id
-          @order_details.price = cart_item.item.price
-          @order_details.amount = cart_item.amount
-          # @order_details.status = 1
-          @order_details.save
-          cart_item.destroy
-        end
-      redirect_to my_page_customer_path
-
-
+      
     end
+      
+      #elsif @address_number == "1"
+        #@shipping_address=ShippingAddress.find(@shipping_address_id)
+        #@order.address = @shipping_address.post_code
+        #@order.post_code = @shipping_address.address
+        #@order.name = @shipping_address.name
+        #@order.save
+     # else
+       # @order.post_code = order_params[:post_code]
+        #@order.address = order_params[:address]
+        #@order.name = order_params[:name]
+        #@order.save
+        #配送先住所登録
+       # @shipping_address = ShippingAddress.new
+       # @shipping_address.customer_id = current_customer.id
+        #@shipping_address.post_code = order_params[:post_code]
+        #@shipping_address.address = order_params[:address]
+        #@shipping_address.name = order_params[:name]
+        #@shipping_address.save
+      #end
+      #redirect_to my_page_customer_path
+    #end
       
       #elsif @address_number == "1"
         #@shipping_address=ShippingAddress.find(@shipping_address_id)

@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     resources :items
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders
+    resources :order_details
  end
 
 
