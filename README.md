@@ -31,9 +31,26 @@
 * ジャンル設定機能
 
 # 環境
-開発環境
+* 開発環境
 Cloud9
-フレームワーク
+* フレームワーク
 Ruby on Rails 
+
+# Gem
+* devise
+* kaminari,~>1.2.1
+* refile
+* refele-mini_magick
+* bootstrap,~>4.5
+* jquery-rails
+
+# バージョン
+* Rails 5.2.6
+
+# 開発メンバー
+* まるさん
+* ばっさー
+* おっきー
+* おっさー
 
 
