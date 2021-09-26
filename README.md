@@ -1,24 +1,34 @@
-# README
+# Nagano_Cake(概要)
+長野県にある洋菓子店のECサイト。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アプリケーションの機能
 
-Things you may want to cover:
+# [顧客]
+*ログイン機能
+　・
+*ログアウト機能
+*商品一覧表示機能
+*商品詳細情報表示機能
+*カート追加機能
+*カート一覧機能
+*カート編集機能
+*注文機能
+*会員情報編集機能
+*退会機能
+*配送先追加・編集機能
+*注文履歴一覧表示機能
+*注文履歴詳細表示機能
 
-* Ruby version
+#[管理者]
+*ログイン機能
+*ログアウト機能
+*注文履歴一覧表示機能
+*注文履歴詳細表示機能
+*顧客一覧表示機能
+*顧客詳細情報表示機能
+*商品一覧表示機能
+*商品詳細情報表示機能
+*商品情報変更機能
+*ジャンル設定機能
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
