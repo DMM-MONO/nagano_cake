@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 my-5">
+      <h5 class="two-line-heading"><%=@customer.full_name %> さんの会員詳細</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
+      <table class="table table-borderless">
+        <tbody>
+           <tr>
+              <td width="20%">会員ID</td>
+              <td width="30%"><%= @customer.id %></td>
+              <td width="50%"></td>
+           </tr>
+           <tr>
+              <td>氏名</td>
+              <td><%= @customer.full_name %></td>
+              <td></td>
+           </tr>
+           <tr>
+              <td>フリガナ</td>
+              <td><%= @customer.full_name_kana %></td>
+              <td></td>
+           </tr>
+           <tr>
+              <td>郵便番号</td>
+              <td><%= @customer.post_code %></td>
+              <td></td>
+           </tr>
+           <tr>
+              <td>住所</td>
+              <td colspan="2"><%= @customer.address %></td>
+              <td></td>
+           </tr>
+           <tr>
+              <td>電話番号</td>
+              <td><%= @customer.phone_number %></td>
+              <td></td>
+           </tr>
+           <tr>
+              <td>メールアドレス</td>
+              <td><%= @customer.email %></td>
+              <td></td>
+           </tr>
+           <tr>
+              <td>会員ステータス</td>
+              <% if @customer.is_deleted == "有効" %>
+            　<td class="active"><%= @customer.is_deleted %></td>
+            <% else %>
+            　<td class="no-active"><%= @customer.is_deleted %></td>
+              <% end %>
+              <td>
+           </tr>
+           <tr>
+              <td></td>
+              <td><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: 'btn btn-success' %></td>
+              <td><%= link_to "注文履歴一覧を見る", root_path, class: 'btn btn-primary' %></td>
+           </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
