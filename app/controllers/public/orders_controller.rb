@@ -49,8 +49,8 @@ class Public::OrdersController < ApplicationController
       @order.post_code = Customer.find(current_customer.id).post_code
       @order.address = Customer.find(current_customer.id).address
       @order.name = Customer.find(current_customer.id).full_name
-      @order.save!
 
+      @order.save!
       current_customer.cart_items.each do |cart_item|
           @order_details = @order.order_details.new
           @order_details.order_id = @order.id
@@ -91,7 +91,7 @@ class Public::OrdersController < ApplicationController
 
 
     private
-    
+
     def order_params
     params.require(:order).permit(:name, :payment_method,:address_number,:shipping_address_id, :shipping_address, :post_code, :address, :total_payment).merge(customer_id: current_customer.id ,postage: 800)
     end
